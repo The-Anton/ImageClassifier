@@ -98,11 +98,7 @@ elif (in_arg.arch=='densenet161'):
 elif (in_arg.arch=='alexnet'):
     exec("model= models.{}(pretrained=True)".format(in_arg.arch))
     input_units = 9216
-    
-elif (in_arg.arch=='densenet161'):
-    exec("model= models.{}(pretrained=True)".format(in_arg.arch))
-    input_units = 2208
-    
+
 else:
     print("Please provide a valid classifier model")
     

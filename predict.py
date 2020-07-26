@@ -33,7 +33,8 @@ in_arg = parser.parse_args()
 
 with open(in_arg.category_names, 'r') as f:
     cat_to_name = json.load(f)
-checkpointData_ = torch.load(in_arg.checkpoint, map_location=('cuda' if ( torch.cuda.is_available()) else 'cpu'))
+    
+checkpointData_ = torch.load(in_arg.checkpoint)
         
     
 if checkpointData_['arch'] == 'vgg16':
@@ -80,7 +81,7 @@ def gpu_status():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     
     if device == "cpu":
-        print("Failed to find cuda going with cpu")
+        print("Failed to find cuda... going with cpu")
     return device
 
 
@@ -89,9 +90,15 @@ def gpu_status():
 def predict(image_path, model, topk):
     
     device = gpu_status()        
-    img = process_image(image_path)            
-    inputs = torch.from_numpy(np.expand_dims(img, axis=0)).type(torch.FloatTensor)
-    model.cpu()
+    img = process_image(image_path)
+    if in_arg.gpu:
+        inputs = torch.from_numpy(np.expand_dims(img, axis=0)).type(torch.FloatTensor)
+    else:
+        inputs = torch.from_numpy(np.expand_dims(img, axis=0)).type(torch.cuda.FloatTensor)
+        
+    model = model.to(device)
+    inputs = inputs.to(device)
+    
     output = model.forward(inputs)
     pb= torch.exp(output)
     

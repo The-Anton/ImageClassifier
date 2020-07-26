@@ -208,6 +208,8 @@ def final_validation():
         
         
 def save_checkpoint():
+    
+    file_path = in_arg.save_dir + 'checkpoint.pth'
             
     if type(in_arg.save_dir)== type(None):
         print("Please provide checkpoint directory for saving checkpoint")
@@ -222,7 +224,7 @@ def save_checkpoint():
                             'dropout':0.5,
                             'class_to_idx':model.class_to_idx,
                             'state_dict': model.state_dict()}
-            torch.save(checkpointData, in_arg.save_dir )
+            torch.save(checkpointData, file_path )
             print("\n......................... Checkpoint Data Saved Successfully .........................\n")
 
         else:

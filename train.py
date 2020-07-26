@@ -11,8 +11,7 @@ from collections import OrderedDict
 import argparse
 import json
 from os.path import isdir
-
-
+from tqdm import tqdm
 
 
 parser = argparse.ArgumentParser()
@@ -22,13 +21,13 @@ parser.add_argument('--data_dir', type = str, default = 'flowers',
 parser.add_argument('--learning_rate', type = float, default =0.003, 
                     help = 'learning rate for the Model') 
 
-parser.add_argument('--epochs', type = int, default = 8, 
+parser.add_argument('--epochs', type = int, default = 3, 
                     help = 'number of time you want to train the neural network') 
 parser.add_argument('--arch', type = str, default = 'vgg16', 
                     help = 'CNN Model Architecture for classifier') 
 parser.add_argument('--save_dir', type = str, default = 'save_directory', 
                     help = 'directory to save checkpoints') 
-parser.add_argument('--gpu', action="store_true", default = 'cpu',
+parser.add_argument('--gpu', action="store_true",
                     help = 'use gpu to train the network') 
 parser.add_argument('--hidden_units', type=int, 
                     help='Hidden units for DNN classifier as int')
@@ -72,7 +71,9 @@ train_loader = torch.utils.data.DataLoader(train_datasets,batch_size=64, shuffle
 valid_loader = torch.utils.data.DataLoader(valid_datasets,batch_size=64,shuffle=False)
 test_loader = torch.utils.data.DataLoader(test_datasets,batch_size=64,shuffle=False)
 
-
+hidden_layer_units = in_arg.hidden_units
+if type(hidden_layer_units) == type(None): 
+        hidden_layer_units = 4096
 
 
 if(in_arg.gpu):
@@ -84,27 +85,48 @@ else:
     device = torch.device("cpu")
 
 
+input_units=0
 
-if type(in_arg.arch) == type(None):
-    model = models.vgg16(pretrained=True)
+if (in_arg.arch=='vgg16'):
+    model= models.vgg16(pretrained=True)
     model.name = "vgg16"
-else:
-    exec("model = models.{}(pretrained=True)".format(in_arg.arch))
-    model.name = in_arg.arch
-
-for p in model.parameters():
-    p.requires_grad = False
+    input_units = 25088    
+elif (in_arg.arch=='densenet161'):
+    exec("model= models.{}(pretrained=True)".format(in_arg.arch))
+    input_units = 2208    
     
+elif (in_arg.arch=='alexnet'):
+    exec("model= models.{}(pretrained=True)".format(in_arg.arch))
+    input_units = 9216
+    
+elif (in_arg.arch=='densenet161'):
+    exec("model= models.{}(pretrained=True)".format(in_arg.arch))
+    input_units = 2208
+    
+else:
+    print("Please provide a valid classifier model")
+    
+      
 
-
-
+     
+    
+for p in model.parameters():
+    p.requires_grad = False     
+  
+ 
+    
+print(" CNN Model Architecture for classifier : {}".format(in_arg.arch))
+          
+    
+print("===> ",input_units)
+    
+    
+    
+    
+    
+    
 def set_classifier():
-    hidden_layer_units = in_arg.hidden_units
-    if type(hidden_layer_units) == type(None): 
-        hidden_layer_units = 4096
-
-    input_units = model.classifier[0].in_features
-
+    
     classifier = nn.Sequential(OrderedDict([
                             ('fc1', nn.Linear(input_units, hidden_layer_units, bias=True)),
                             ('relu', nn.ReLU()),
@@ -125,32 +147,33 @@ def train_model():
         cmmulative_loss = 0
         model.train() 
         print(".....................................  Training Round {} started...........................................".format(e+1))
-
+        
+        
         for inputs, labels in train_loader:
             current_turn += 1
-            
+
             inputs, labels = inputs.to(device), labels.to(device)
-            
+
             optimizer.zero_grad()
             outputs = model.forward(inputs)
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
-            
-            cmmulative_loss += loss.item()
-            
-            if current_turn % 30 == 0:
-                model.eval()
 
-                with torch.no_grad():
+            cmmulative_loss += loss.item()
+
+            if current_turn % 30 == 0:
+               model.eval()
+
+               with torch.no_grad():
                     data = validation_test(model, valid_loader, criterion)
                     valid_loss, accuracy = data
-                print("Training Loss: {:.4f}  ".format(cmmulative_loss/current_turn), end=" ")
-                print("Validation Loss: {:.4f}  ".format(valid_loss/len(test_loader)), end=" ")
-                print("Validation Accuracy: {:.4f}".format(accuracy/len(test_loader)))
-                
-                running_loss = 0
-                model.train()
+               print("Training Loss: {:.4f}  ".format(cmmulative_loss/current_turn), end=" ")
+               print("Validation Loss: {:.4f}  ".format(valid_loss/len(test_loader)), end=" ")
+               print("Validation Accuracy: {:.4f}".format(accuracy/len(test_loader)))
+
+               running_loss = 0
+               model.train()
 
 
 def validation_test(model, test_loader, criterion):
@@ -204,7 +227,7 @@ def save_checkpoint():
                             'dropout':0.5,
                             'class_to_idx':model.class_to_idx,
                             'state_dict': model.state_dict()}
-            torch.save(checkpointData, 'checkpointData2.pth')
+            torch.save(checkpointData, in_arg.save_dir )
         else:
             print("Wrong directory...... Unable to save the model")
 

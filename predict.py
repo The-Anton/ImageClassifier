@@ -33,7 +33,8 @@ in_arg = parser.parse_args()
 
 with open(in_arg.category_names, 'r') as f:
     cat_to_name = json.load(f)
-checkpointData_ = torch.load(in_arg.checkpoint)
+checkpointData_ = torch.load(in_arg.checkpoint, map_location=('cuda' if ( torch.cuda.is_available()) else 'cpu'))
+        
     
 if checkpointData_['arch'] == 'vgg16':
     model = models.vgg16(pretrained=True)
@@ -71,12 +72,26 @@ def process_image(image_path):
     return img_new
 
 
+
+def gpu_status():
+    if not in_arg.gpu:
+        return torch.device("cpu")
+    
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    
+    if device == "cpu":
+        print("Failed to find cuda going with cpu")
+    return device
+
+
+
+
 def predict(image_path, model, topk):
     
-    model.to("cpu")
-    img = process_image(image_path)
-    image_tensor = torch.from_numpy(img).type(torch.FloatTensor).to("cpu")
-    inputs = image_tensor.unsqueeze(0)
+    device = gpu_status()        
+    img = process_image(image_path)            
+    inputs = torch.from_numpy(np.expand_dims(img, axis=0)).type(torch.FloatTensor)
+    model.cpu()
     output = model.forward(inputs)
     pb= torch.exp(output)
     
@@ -94,13 +109,10 @@ def predict(image_path, model, topk):
         i_ = "{}".format(data.get(i))
         top_flow.append(cat_to_name.get(i_))
         
-
     return top_pb, top_flow
-
     
     
 data = predict(in_arg.image, model, in_arg.top_k)
-
 
 probs, flowers = data
 for iterate in range(in_arg.top_k):

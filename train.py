@@ -118,13 +118,6 @@ for p in model.parameters():
 print(" CNN Model Architecture for classifier : {}".format(in_arg.arch))
           
     
-print("===> ",input_units)
-    
-    
-    
-    
-    
-    
 def set_classifier():
     
     classifier = nn.Sequential(OrderedDict([

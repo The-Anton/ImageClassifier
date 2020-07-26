@@ -115,9 +115,9 @@ for p in model.parameters():
   
  
     
-print(" CNN Model Architecture for classifier : {}".format(in_arg.arch))
+print("\n CNN Model Architecture for classifier : {}".format(in_arg.arch))
           
-    
+ 
 def set_classifier():
     
     classifier = nn.Sequential(OrderedDict([
@@ -134,15 +134,16 @@ def train_model():
         
     epochs = in_arg.epochs
     current_turn = 0
-    print("Model training has been started..........  Relax and have a seat")
+    print("\nModel training has been started..........  Relax and have a seat")
 
     for e in range(epochs):
         cmmulative_loss = 0
         model.train() 
-        print(".....................................  Training Round {} started...........................................".format(e+1))
+        print("\n.....................................   Round {} Training Started ...........................................\n".format(e+1))
         
         
-        for inputs, labels in train_loader:
+        for inputs, labels in tqdm(train_loader):
+            
             current_turn += 1
 
             inputs, labels = inputs.to(device), labels.to(device)
@@ -167,6 +168,7 @@ def train_model():
 
                running_loss = 0
                model.train()
+    print("\n......................... Model Trained Successfully .........................\n")
 
 
 def validation_test(model, test_loader, criterion):
@@ -221,6 +223,8 @@ def save_checkpoint():
                             'class_to_idx':model.class_to_idx,
                             'state_dict': model.state_dict()}
             torch.save(checkpointData, in_arg.save_dir )
+            print("\n......................... Checkpoint Data Saved Successfully .........................\n")
+
         else:
             print("Wrong directory...... Unable to save the model")
 

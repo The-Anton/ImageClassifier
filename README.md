@@ -39,9 +39,9 @@ These are the files included as part of the project and what each contains:
                     <li>Other params for different purpose:
                     <ul>
                         <li>Set directory to save checkpoints:&emsp;&emsp;&emsp;&emsp;<b>"python train.py data_dir --save_dir save_directory"</b></li>
-                        <li>Choose architecture:&nbsp;                  &nbsp;<b>"python train.py data_dir --arch "vgg13" "</b></li>
-                        <li>Set hyperparameters:&nbsp;                  &nbsp;<b>"python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20"</b></li>
-                        <li>Use GPU for training:&nbsp;                 &nbsp;<b>"python train.py data_dir --gpu"</b></li>
+                        <li>Choose architecture:&emsp;&emsp;&emsp;&emsp;&emsp;<b>"python train.py data_dir --arch "vgg13" "</b></li>
+                        <li>Set hyperparameters:&emsp;&emsp;&emsp;&emsp;&emsp;<b>"python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20"</b></li>
+                        <li>Use GPU for training:&emsp;&emsp;&emsp;&emsp;&emsp;<b>"python train.py data_dir --gpu"</b></li>
                     </ul>
             </ul>
     <li>Predict flower name from an image with <b>predict.py</b> along with the probability of that name. That is, you'll pass in a single image <b>/path/to/image</b> and return     the flower name   and class probability.</li>

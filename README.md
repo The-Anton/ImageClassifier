@@ -25,13 +25,13 @@ Image Classifier Project.html: Same as the file above, except in HTML form.
 
 train.py: This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities:
 
-    <ul>Creating the Datasets</ul>
+<ul>Creating the Datasets</ul>
 
-    <ul>Creating the Architecture</ul>
+<ul>Creating the Architecture</ul>
 
-    <ul>Training the model</ul>
+<ul>Training the model</ul>
 
-    <ul>Saving the Model</ul>
+<ul>Saving the Model</ul>
 
 predict.py: This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities
 

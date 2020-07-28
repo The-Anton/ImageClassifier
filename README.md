@@ -24,15 +24,15 @@ Image Classifier Project.ipynb: This is the Jupyter notebook where I conducted a
 Image Classifier Project.html: Same as the file above, except in HTML form.
 
 train.py: This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities:
-<li>
-<ul>Creating the Datasets</ul>
+<ul>
+<li>Creating the Datasets</li>
 
-<ul>Creating the Architecture</ul>
+<li>Creating the Architecture</li>
 
-<ul>Training the model</ul>
+<li>Training the model</li>
 
-<ul>Saving the Model</ul>
-</li>
+<ul>Saving the Model</li>
+</ul>
 predict.py: This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities
 
 Loading the Model

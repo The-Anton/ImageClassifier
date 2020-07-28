@@ -1,6 +1,6 @@
 
 <h1>Flower Image Classifier</h1>
-In this project, we'll be creating a deep learning network to classify flowers per the labels provided. This project was established by Udacity and performed within Udacity's GPU enabled workspace, so unfortunately the source files for this project are not included. The project also utilizes transfer learning to import already trained classifiers from the PyTorch package while modifying the classifier attribute of each package.
+In this project, i have created deep learning network to classify flowers per the labels provided. This was a submission project for a AI course provided by Udacity. The project is divided into two parts 1) We select an Neural Network architecture and train it for a centrain number of times using GPU and then saves the model for further use. 2) We load the saved model and provide it with an image to for testing the classification model. The project also utilizes transfer learning to import already trained classifiers from the PyTorch package while modifying the classifier attribute of each package.
 
 
 

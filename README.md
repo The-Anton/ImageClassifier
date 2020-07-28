@@ -38,10 +38,10 @@ These are the files included as part of the project and what each contains:
                     <li>Prints out training loss, validation loss, and validation accuracy as the network trains</li>
                     <li>Other params for different purpose:
                     <ul>
-                        <li>Set directory to save checkpoints:&nbsp;    <b>"python train.py data_dir --save_dir save_directory"</b></li>
-                        <li>Choose architecture:&nbsp;                  <b>"python train.py data_dir --arch "vgg13" "</b></li>
-                        <li>Set hyperparameters:&nbsp;                  <b>"python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20"</b></li>
-                        <li>Use GPU for training:&nbsp;                 <b>"python train.py data_dir --gpu"</b></li>
+                        <li>Set directory to save checkpoints:&nbsp;    &nbsp;<b>"python train.py data_dir --save_dir save_directory"</b></li>
+                        <li>Choose architecture:&nbsp;                  &nbsp;<b>"python train.py data_dir --arch "vgg13" "</b></li>
+                        <li>Set hyperparameters:&nbsp;                  &nbsp;<b>"python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20"</b></li>
+                        <li>Use GPU for training:&nbsp;                 &nbsp;<b>"python train.py data_dir --gpu"</b></li>
                     </ul>
             </ul>
     <li>Predict flower name from an image with <b>predict.py</b> along with the probability of that name. That is, you'll pass in a single image <b>/path/to/image</b> and return     the flower name   and class probability.</li>

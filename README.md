@@ -29,23 +29,26 @@ These are the files included as part of the project and what each contains:
 </ul>
 
 <h2>Instructions for running the classifier</h2>
-<ol>
-<li>Train a new network on a data set with train.py</li>
-<ul>
-<li>Basic usage: python train.py data_directory</li>
-<li>Prints out training loss, validation loss, and validation accuracy as the network trains</li>
-<li>Other params for different purpose:
  <ol>
-<li>
-Set directory to save checkpoints: python train.py data_dir --save_dir save_directory</li>
-<li>Choose architecture: <b>python train.py data_dir --arch "vgg13"</b></li>
-<li>Set hyperparameters: <b>python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20</b></li>
-<li>Use GPU for training: <b>python train.py data_dir --gpu</b></li>
-</ul>
-Predict flower name from an image with predict.py along with the probability of that name. That is, you'll pass in a single image /path/to/image and return the flower name and class probability.
-
-Basic usage: python predict.py /path/to/image checkpoint
-Options:
-Return top KK most likely classes: python predict.py input checkpoint --top_k 3
-Use a mapping of categories to real names: python predict.py input checkpoint --category_names cat_to_name.json
-Use GPU for inference: python predict.py input checkpoint --gpu
+   <li>Train a new network on a data set with train.py</li>
+ <ul>
+   <li>Basic usage: python train.py data_directory</li>
+   <li>Prints out training loss, validation loss, and validation accuracy as the network trains</li>
+   <li>Other params for different purpose:
+     <ol>
+       <li>
+             Set directory to save checkpoints:  <b>python train.py data_dir --save_dir save_directory</b></li>
+            <li>Choose architecture:   <b>python train.py data_dir --arch "vgg13"</b></li>
+            <li>Set hyperparameters:   <b>python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20</b></li>
+            <li>Use GPU for training:   <b>python train.py data_dir --gpu</b></li>
+ </ul>
+  <li>Predict flower name from an image with <b>predict.py</b> along with the probability of that name. That is, you'll pass in a single image <b>/path/to/image</b> and return     the flower name   and class probability.</li>
+<ul>
+    <li>Basic usage: python predict.py /path/to/image checkpoint</li>
+      <li>Options:<li>
+ <ul>
+          <li>Return top KK most likely classes: python predict.py input checkpoint --top_k 3</li>
+          <li>Use a mapping of categories to real names: python predict.py input checkpoint --category_names cat_to_name.json</li>
+          <li>Use GPU for inference: python predict.py input checkpoint --gpu</li>
+  </ul>
+  </ul>

@@ -38,10 +38,10 @@ These are the files included as part of the project and what each contains:
                     <li>Prints out training loss, validation loss, and validation accuracy as the network trains</li>
                     <li>Other params for different purpose:
                     <ul>
-                        <li>Set directory to save checkpoints:&emsp;&emsp;&emsp;&emsp;<b>"python train.py data_dir --save_dir save_directory"</b></li>
-                        <li>Choose architecture:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>"python train.py data_dir --arch "vgg13" "</b></li>
-                        <li>Set hyperparameters:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>"python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20"</b></li>
-                        <li>Use GPU for training:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>"python train.py data_dir --gpu"</b></li>
+                        <li>Set directory to save checkpoints      :<b>"python train.py data_dir --save_dir save_directory"</b></li>
+                        <li>Choose architecture                    :<b>"python train.py data_dir --arch "vgg13" "</b></li>
+                        <li>Set hyperparameters                    :<b>"python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20"</b></li>
+                        <li>Use GPU for training                   :<b>"python train.py data_dir --gpu"</b></li>
                     </ul>
             </ul>
     <li>Predict flower name from an image with <b>predict.py</b> along with the probability of that name. That is, you'll pass in a single image <b>/path/to/image</b> and return     the flower name   and class probability.</li>
@@ -49,9 +49,9 @@ These are the files included as part of the project and what each contains:
             <li>Basic usage: python predict.py /path/to/image checkpoint</li>
             <li>Options:<li>
                 <ul>
-                    <li>Return top KK most likely classes:&nbsp;               <b>"predict.py input checkpoint --top_k 3"</b></li>
-                    <li>Use a mapping of categories to real names:&nbsp;       <b>"python predict.py input checkpoint --category_names cat_to_name.json"</b></li>
-                    <li>Use GPU for inference:&nbsp;                           <b>"python predict.py input checkpoint --gpu"</b></li>
+                    <li>Return top KK most likely classes          :<b>"predict.py input checkpoint --top_k 3"</b></li>
+                    <li>Use a mapping of categories to real names  :<b>"python predict.py input checkpoint --category_names cat_to_name.json"</b></li>
+                    <li>Use GPU for inference                      :<b>"python predict.py input checkpoint --gpu"</b></li>
                 </ul>
         </ul>
 </ol>

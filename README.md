@@ -15,7 +15,7 @@ Class Prediction: Finally, we use our newly trained model to make a prediction o
 
 
 
-Files Included
+<h2Files Included</h2>
 
 These are the files included as part of the project and what each contains:
 <ol>
@@ -34,6 +34,7 @@ These are the files included as part of the project and what each contains:
 <li>Saving the Model</li>
 </ul>
 <li><b>predict.py:</b> This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities</li>
-
-Loading the Model
-Class Prediction
+<ul>
+<li>Loading the Model</li>
+<li>Class Prediction</li>
+</ul>

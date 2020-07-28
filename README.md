@@ -1,8 +1,5 @@
-# ImageClassifier-project
-Image Classifier build with PyTorch that can classify various flowers. (This it my final Udacity project)
 
-
-<h1>Flower Image Classifier Project</h1>
+<h1>Flower Image Classifier</h1>
 In this project, we'll be creating a deep learning network to classify flowers per the labels provided. This project was established by Udacity and performed within Udacity's GPU enabled workspace, so unfortunately the source files for this project are not included. The project also utilizes transfer learning to import already trained classifiers from the PyTorch package while modifying the classifier attribute of each package.
 
 Project Breakdown
@@ -13,7 +10,13 @@ Creating the Architecture: Utilizing the pre-trained models from PyTorch's torch
 Training the Model: With help from PyTorch and Udacity's GPU-enabled platform, we train our model across our training and validation datasets to create an ideal model for classifying the flowers.
 Saving / Loading the Model: To practice utilizing the model in other platforms, we export the model to a 'checkpoint.pth' file and re-load / rebuild it in another file.
 Class Prediction: Finally, we use our newly trained model to make a prediction of a flower given a testing input image.
+
+
+
+
+
 Files Included
+
 These are the files included as part of the project and what each contains:
 
 Image Classifier Project.ipynb: This is the Jupyter notebook where I conducted all my activities, including a little more than what is included in the predict.py and train.py files.
@@ -22,13 +25,13 @@ Image Classifier Project.html: Same as the file above, except in HTML form.
 
 train.py: This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities:
 
-Creating the Datasets
+    <ul>Creating the Datasets</ul>
 
-Creating the Architecture
+    <ul>Creating the Architecture</ul>
 
-Training the model
+    <ul>Training the model</ul>
 
-Saving the Model
+    <ul>Saving the Model</ul>
 
 predict.py: This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities
 

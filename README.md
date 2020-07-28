@@ -19,11 +19,11 @@ Files Included
 
 These are the files included as part of the project and what each contains:
 <ol>
-<li>Image Classifier Project.ipynb: This is the Jupyter notebook where I conducted all my activities, including a little more than what is included in the predict.py and train.py files.</li>
+<li><b>Image Classifier Project.ipynb:</b> This is the Jupyter notebook where I conducted all my activities, including a little more than what is included in the predict.py and train.py files.</li>
 
-<li>Image Classifier Project.html: Same as the file above, except in HTML form.</li>
+<li><b>Image Classifier Project.html:</b> Same as the file above, except in HTML form.</li>
 
-<li>train.py: This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities:</li>
+<li><b>train.py:</b> This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities:</li>
 <ul>
 <li>Creating the Datasets</li>
 
@@ -33,7 +33,7 @@ These are the files included as part of the project and what each contains:
 
 <li>Saving the Model</li>
 </ul>
-<li>predict.py: This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities</li>
+<li><b>predict.py:</b> This file accepts inputs from the command line prompt and takes the work from the Jupyter notebook for the following activities</li>
 
 Loading the Model
 Class Prediction

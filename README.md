@@ -30,6 +30,7 @@ These are the files included as part of the project and what each contains:
 
 
 <h2>Instructions for running the classifier</h2>
+
 <ol>
     <li>Train a new network on a data set with train.py</li>
             <ul>
@@ -38,7 +39,7 @@ These are the files included as part of the project and what each contains:
                     <li>Other params for different purpose:
                     <ul>
                         <li>Set directory to save checkpoints:  <b>"python train.py data_dir --save_dir save_directory"</b></li>
-                        <li>Choose architecture:       <b>"python train.py data_dir --arch "vgg13" "</b></li>
+                        <li>Choose architecture:<span>         </span><b>"python train.py data_dir --arch "vgg13" "</b></li>
                         <li>Set hyperparameters:       <b>"python train.py data_dir --learning_rate 0.01 --hidden_units 512 --epochs 20"</b></li>
                         <li>Use GPU for training:      <b>"python train.py data_dir --gpu"</b></li>
                     </ul>
